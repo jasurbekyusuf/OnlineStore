@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Api", "OnlineSt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Domain", "OnlineStore.Domain\OnlineStore.Domain.csproj", "{6532DD18-DF7B-4DFF-9F19-3D844EDB02EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Infrastructure", "OnlineStore.Infrastructure\OnlineStore.Infrastructure.csproj", "{65D1BA20-6958-4FC7-A218-09DFF230B769}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Infrastructure", "OnlineStore.Infrastructure\OnlineStore.Infrastructure.csproj", "{65D1BA20-6958-4FC7-A218-09DFF230B769}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Infrastructure.Build", "OnlineStore.Infrastructure.Build\OnlineStore.Infrastructure.Build.csproj", "{28C12ECB-34EF-4BA4-A447-2D66BDE9D743}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Infrastructure.Build", "OnlineStore.Infrastructure.Build\OnlineStore.Infrastructure.Build.csproj", "{28C12ECB-34EF-4BA4-A447-2D66BDE9D743}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Service", "OnlineStore.Service\OnlineStore.Service.csproj", "{3058E692-9038-4E3E-B730-90AB34DC741A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{28C12ECB-34EF-4BA4-A447-2D66BDE9D743}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28C12ECB-34EF-4BA4-A447-2D66BDE9D743}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28C12ECB-34EF-4BA4-A447-2D66BDE9D743}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3058E692-9038-4E3E-B730-90AB34DC741A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3058E692-9038-4E3E-B730-90AB34DC741A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3058E692-9038-4E3E-B730-90AB34DC741A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3058E692-9038-4E3E-B730-90AB34DC741A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
