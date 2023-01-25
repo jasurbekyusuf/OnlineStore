@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using OnlineStore.Domain.Entities;
 
 namespace OnlineStore.Api
 {
@@ -18,6 +19,7 @@ namespace OnlineStore.Api
         {
 
             services.AddControllers();
+            services.AddDbContext<OnlinestoreContext>();
             services.AddSwaggerGen(config =>
             {
                 config.SwaggerDoc(
