@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace OnlineStore.Domain.Entities;
+﻿namespace OnlineStore.Domain.Entities;
 
 public partial class Order
 {

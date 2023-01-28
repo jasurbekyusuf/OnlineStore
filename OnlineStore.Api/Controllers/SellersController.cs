@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using OnlineStore.Domain.Entities;
+using OnlineStore.Service.DTOs.Seller;
+using OnlineStore.Service.Interfaces;
 
 namespace OnlineStore.Api.Controllers
 {
@@ -10,17 +9,22 @@ namespace OnlineStore.Api.Controllers
     [Route("api/[controller]")]
     public class SellersController : ControllerBase
     {
-        private readonly OnlinestoreContext _onlinestoreContext;
+        private readonly ISellerService sellerService;
 
-        public SellersController(OnlinestoreContext onlinestoreContext)
+        public SellersController(ISellerService sellerService)
         {
-            _onlinestoreContext = onlinestoreContext;
+            this.sellerService = sellerService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<Seller>>> GetSellers()
+        [HttpPost]
+        public async Task<IActionResult> PostGuestAsync(SellerForCreationDto sellerDto)
         {
-            return Ok(await _onlinestoreContext.Sellers.ToListAsync());
+            if (sellerDto == null)
+            {
+                return BadRequest("Seller must not");
+            }
+            var seller = await sellerService.AddSellerAsync(sellerDto);
+            return Ok(seller);
         }
     }
 }
