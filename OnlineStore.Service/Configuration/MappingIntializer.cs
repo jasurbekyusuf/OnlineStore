@@ -10,7 +10,6 @@ namespace OnlineStore.Service.Configuration
         {
             CreateMap<Seller, SellerForCreationDto>().ReverseMap();
             CreateMap<Seller, SellerForUpdateDTo>().ReverseMap();
-            CreateMap<Seller, SellerForSelectDTo>().ReverseMap();
         }
     }
 }

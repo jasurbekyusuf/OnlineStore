@@ -1,9 +1,11 @@
-﻿using OnlineStore.Service.DTOs.Seller;
+﻿using OnlineStore.Domain.Entities;
+using OnlineStore.Service.DTOs.Seller;
 
 namespace OnlineStore.Service.Interfaces
 {
     public interface ISellerService
     {
-        Task<SellerForSelectDTo> AddSellerAsync(SellerForCreationDto sellerDto);
+        Task<Seller> AddSellerAsync(SellerForCreationDto sellerDto);
+        Task<IQueryable<Seller>> RetrieveAllSellers();
     }
 }
