@@ -47,7 +47,7 @@ namespace OnlineStore.Api.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("id")]
         public async Task<JsonResponse> GetSellerByIdAsync(int sellerId)
         {
             try
@@ -61,7 +61,7 @@ namespace OnlineStore.Api.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("id")]
         public async Task<JsonResponse> PutSellerAsync(int sellerId, SellerForUpdateDTo sellerDto)
         {
             try
@@ -75,7 +75,7 @@ namespace OnlineStore.Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("id")]
         public async Task<JsonResponse> DeleteSellerByIdAsync(int id)
         {
             try
