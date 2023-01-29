@@ -86,10 +86,15 @@ namespace OnlineStore.Service.Services
                     throw new ErrorCodeException(ResponseMessages.ERROR_NOT_FOUND_DATA);
                 }
 
-                //if (customer.FirstName != customerDto.FirstName)
-                //{
-                //    var existCustomer = (await unitOfWork.Customers.GetAllAsync(customer => customer))
-                //}
+                if (customer.Email != customerDto.Email)
+                {
+                    var existSellerEmail = (await unitOfWork.Sellers.GetAllAsync()).Any(customer => customer.Email == customerDto.Email);
+                    if (existSellerEmail)
+                    {
+                        throw new ErrorCodeException(ResponseMessages.ERROR_EXISTING_DATA);
+                    }
+                }
+
                 customer.FirstName = customerDto.FirstName;
                 customer.LastName = customerDto.LastName;
                 customer.Email = customerDto.Email;
