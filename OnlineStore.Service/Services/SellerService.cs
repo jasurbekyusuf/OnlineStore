@@ -41,10 +41,8 @@ namespace OnlineStore.Service.Services
             }
             catch (Exception exception)
             {
-
                 throw;
             }
-
         }
 
         public async Task<IQueryable<Seller>> RetrieveAllSellers()
@@ -56,7 +54,78 @@ namespace OnlineStore.Service.Services
             }
             catch (Exception exception)
             {
+                throw;
+            }
+        }
 
+        public async Task<Seller> RetrieveSellerByIdAsync(int sellerId)
+        {
+            try
+            {
+                Seller seller = await unitOfWork.Sellers.GetAsync(seller => seller.Id == sellerId);
+                return seller;
+            }
+            catch (Exception exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<Seller> ModifySellerAsync(int sellerId, SellerForUpdateDTo sellerDto)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(sellerDto.FirstName))
+                {
+                    throw new ErrorCodeException(ResponseMessages.ERROR_INVALID_DATA);
+                }
+
+                var seller = await unitOfWork.Sellers.GetAsync(seller => seller.Id == sellerId);
+                if (seller == null)
+                {
+                    throw new ErrorCodeException(ResponseMessages.ERROR_NOT_FOUND_DATA);
+                }
+
+                //if (seller.FirstName != sellerDto.FirstName)
+                //{
+                //    var existSeller = (await unitOfWork.Sellers.GetAllAsync(seller => seller))
+                //}
+                seller.FirstName = sellerDto.FirstName;
+                seller.LastName = sellerDto.LastName;
+                seller.Email = sellerDto.Email;
+                seller.Phone = sellerDto.Phone;
+
+                var result = await unitOfWork.Sellers.UpdateAsync(seller);
+                await unitOfWork.SaveChangesAsync();
+
+                if (result == null)
+                {
+                    throw new ErrorCodeException(ResponseMessages.ERROR_EDIT_DATA);
+                }
+
+                return result;
+            }
+            catch (Exception excepion)
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> RemoveSellerByIdAsync(int sellerId)
+        {
+            try
+            {
+                var seller = await unitOfWork.Sellers.GetAsync(seller => seller.Id == sellerId);
+                if (seller == null)
+                {
+                    throw new ErrorCodeException(ResponseMessages.ERROR_NOT_FOUND_DATA);
+                }
+
+                await unitOfWork.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception exception)
+            {
                 throw;
             }
         }
