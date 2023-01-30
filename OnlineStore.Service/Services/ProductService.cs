@@ -87,7 +87,7 @@ namespace OnlineStore.Service.Services
                 }
 
                 product.Title = productDto.Title;
-                product.Description = productDto.Description;
+                //product.Description = productDto.Description;
                 product.Price = productDto.Price;
                 product.ProductCount = productDto.ProductCount;
 
