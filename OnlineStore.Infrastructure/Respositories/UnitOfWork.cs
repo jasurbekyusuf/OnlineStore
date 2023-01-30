@@ -16,7 +16,6 @@ namespace OnlineStore.Infrastructure.Respositories
 
         public IOrderRepository Orders { get; private set; }
 
-        public IOrderProductRepository OrderProducts { get; private set; }
 
         public UnitOfWork(OnlinestoreContext onlinestoreContext)
         {
@@ -26,7 +25,6 @@ namespace OnlineStore.Infrastructure.Respositories
             Customers = new CustomerRepository(onlinestoreContext);
             Products = new ProductRepository(onlinestoreContext);
             Orders = new OrderRepository(onlinestoreContext);
-            OrderProducts = new OrderProductRepository(onlinestoreContext);
         }
 
         public void Dispose()

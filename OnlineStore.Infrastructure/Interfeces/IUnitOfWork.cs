@@ -6,7 +6,6 @@
         public ICustomerRepository Customers { get; }
         public IProductRepository Products { get; }
         public IOrderRepository Orders { get; }
-        public IOrderProductRepository OrderProducts { get; }
         Task SaveChangesAsync();
     }
 }
