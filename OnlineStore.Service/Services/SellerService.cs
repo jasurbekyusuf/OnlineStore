@@ -126,6 +126,7 @@ namespace OnlineStore.Service.Services
                     throw new ErrorCodeException(ResponseMessages.ERROR_NOT_FOUND_DATA);
                 }
 
+                await unitOfWork.Sellers.DeleteAsync(seller => seller.Id == sellerId);
                 await unitOfWork.SaveChangesAsync();
                 return true;
             }

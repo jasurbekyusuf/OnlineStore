@@ -20,7 +20,7 @@ namespace OnlineStore.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResponse> PostGuestAsync(CustomerForCreationDto useDto)
+        public async Task<JsonResponse> PostCustomerAsync(CustomerForCreationDto useDto)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace OnlineStore.Api.Controllers
             }
         }
 
-        [HttpGet("id")]
+        [HttpGet("{customerId}")]
         public async Task<JsonResponse> GetCustomerByIdAsync(int customerId)
         {
             try
@@ -61,7 +61,7 @@ namespace OnlineStore.Api.Controllers
             }
         }
 
-        [HttpPut("id")]
+        [HttpPut("{customerId}")]
         public async Task<JsonResponse> PutCustomerAsync(int customerId, CustomerForUpdateDTo customerDto)
         {
             try
@@ -75,12 +75,12 @@ namespace OnlineStore.Api.Controllers
             }
         }
 
-        [HttpDelete("id")]
-        public async Task<JsonResponse> DeleteCustomerByIdAsync(int id)
+        [HttpDelete("{customerId}")]
+        public async Task<JsonResponse> DeleteCustomerByIdAsync(int customerId)
         {
             try
             {
-                var result = await customerService.RemoveCustomerByIdAsync(id);
+                var result = await customerService.RemoveCustomerByIdAsync(customerId);
                 return JsonResponse.DataResponse(result, ResponseMessages.SUCCESS_DELETE_DATA);
             }
             catch (Exception ex)

@@ -10,6 +10,7 @@ namespace OnlineStore.Service.Extensions
         public static void AddServicesCustom(this IServiceCollection services)
         {
             services.AddScoped<ISellerService, SellerService>()
+                .AddScoped<ICustomerService, CustomerService>()
                 .AddAutoMapper(typeof(MappingInitializer));
         }
     }
