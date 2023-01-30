@@ -47,7 +47,7 @@ namespace OnlineStore.Api.Controllers
             }
         }
 
-        [HttpGet("id")]
+        [HttpGet("{sellerId}")]
         public async Task<JsonResponse> GetSellerByIdAsync(int sellerId)
         {
             try
@@ -61,7 +61,7 @@ namespace OnlineStore.Api.Controllers
             }
         }
 
-        [HttpPut("id")]
+        [HttpPut("{sellerId}")]
         public async Task<JsonResponse> PutSellerAsync(int sellerId, SellerForUpdateDTo sellerDto)
         {
             try
@@ -75,17 +75,17 @@ namespace OnlineStore.Api.Controllers
             }
         }
 
-        [HttpDelete("id")]
-        public async Task<JsonResponse> DeleteSellerByIdAsync(int id)
+        [HttpDelete("{sellerId}")]
+        public async Task<JsonResponse> DeleteSellerByIdAsync(int sellerId)
         {
             try
             {
-                var result = await sellerService.RemoveSellerByIdAsync(id);
+                var result = await sellerService.RemoveSellerByIdAsync(sellerId);
                 return JsonResponse.DataResponse(result, ResponseMessages.SUCCESS_DELETE_DATA);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                return JsonResponse.ErrorResponse(ex.Message);
+                return JsonResponse.ErrorResponse(exception.Message);
             }
         }
     }

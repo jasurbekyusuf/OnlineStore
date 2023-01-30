@@ -47,7 +47,7 @@ namespace OnlineStore.Api.Controllers
             }
         }
 
-        [HttpGet("id")]
+        [HttpGet("{customerId}")]
         public async Task<JsonResponse> GetCustomerByIdAsync(int customerId)
         {
             try
