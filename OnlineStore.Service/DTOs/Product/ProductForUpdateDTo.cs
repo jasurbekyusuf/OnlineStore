@@ -1,4 +1,4 @@
-﻿namespace OnlineStore.Service.DTOs.Customer
+﻿namespace OnlineStore.Service.DTOs.Product
 {
     public class ProductForUpdateDTo
     {
