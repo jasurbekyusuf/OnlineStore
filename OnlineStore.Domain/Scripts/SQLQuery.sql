@@ -1,6 +1,6 @@
-CREATE DATABASE OnlineStore1;
+CREATE DATABASE onlinestore;
 
-USE OnlineStore1;
+USE onlinestore;
 
 CREATE TABLE Seller(
 Id int identity (1,1) primary key not null,
@@ -31,9 +31,7 @@ Descriptions nvarchar(500),
 Price decimal not null,
 ProductCount int,
 Sold int,
-UserId int foreign key  references Seller(Id) not null,
-CreatedDate datetimeoffset,
-UpdatedDate datetimeoffset
+UserId int foreign key  references Seller(Id) not null
 )
 
 Create Table [Order](
@@ -42,5 +40,8 @@ Count int not null,
 TotalPrice decimal not null,
 ProductId int foreign key  references Product(Id),
 CustomerId int foreign key  references Customer(Id),
-SellerId int foreign key references Seller(Id)
+SellerId int foreign key references Seller(Id),
+CreatedDate datetimeoffset,
+UpdatedDate datetimeoffset
 )
+
