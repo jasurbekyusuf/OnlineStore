@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using OnlineStore.Domain.Entities;
 using OnlineStore.Infrastructure.Extensions;
 using OnlineStore.Service.Extensions;
 
@@ -23,6 +22,10 @@ namespace OnlineStore.Api
             services.AddControllers();
             services.AddInfrastructureService();
             services.AddServicesCustom();
+            services.AddControllersWithViews()
+                  .AddNewtonsoftJson(options =>
+                   options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddSwaggerGen(config =>
             {
                 config.SwaggerDoc(
