@@ -4,7 +4,6 @@ using OnlineStore.Domain.Constants;
 using OnlineStore.Domain.Entities;
 using OnlineStore.Infrastructure.Interfeces;
 using OnlineStore.Service.DTOs.Order;
-using OnlineStore.Service.DTOs.Order;
 using OnlineStore.Service.Interfaces;
 
 namespace OnlineStore.Service.Services
@@ -80,7 +79,7 @@ namespace OnlineStore.Service.Services
             }
         }
 
-        public async Task<Order> ModifyOrderAsync(int orderId,OrderForUpdateDto orderDto)
+        public async Task<Order> ModifyOrderAsync(int orderId, OrderForUpdateDto orderDto)
         {
             try
             {
@@ -97,7 +96,7 @@ namespace OnlineStore.Service.Services
 
                 order.CreatedDate = orderDto.CreatedDate;
                 order.UpdatedDate = orderDto.UpdatedDate;
-                
+
                 var result = await unitOfWork.Orders.UpdateAsync(order);
                 await unitOfWork.SaveChangesAsync();
 
