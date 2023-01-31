@@ -30,8 +30,8 @@ namespace OnlineStore.Service.Services
 
                 var existCustomer = (await unitOfWork.Customers.GetAllAsync())
                     .Any(customer => customer.Id == orderDto.CustomerId);
-                var existOrder = (await unitOfWork.Orders.GetAllAsync())
-                    .Any(order => order.Id == orderDto.ProductId);
+                var existOrder = (await unitOfWork.Products.GetAllAsync())
+                    .Any(product => product.Id == orderDto.ProductId);
                 if (!existCustomer || !existOrder)
                 {
                     throw new ErrorCodeException(ResponseMessages.ERROR_NOT_FOUND_DATA);
