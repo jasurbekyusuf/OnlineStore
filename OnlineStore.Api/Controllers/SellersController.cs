@@ -76,11 +76,11 @@ namespace OnlineStore.Api.Controllers
         }
 
         [HttpDelete("{sellerId}")]
-        public async Task<JsonResponse> DeleteSellerByIdAsync(int id)
+        public async Task<JsonResponse> DeleteSellerByIdAsync(int sellerId)
         {
             try
             {
-                var result = await sellerService.RemoveSellerByIdAsync(id);
+                var result = await sellerService.RemoveSellerByIdAsync(sellerId);
                 return JsonResponse.DataResponse(result, ResponseMessages.SUCCESS_DELETE_DATA);
             }
             catch (Exception ex)
