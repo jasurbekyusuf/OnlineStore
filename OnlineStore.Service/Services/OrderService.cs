@@ -94,6 +94,7 @@ namespace OnlineStore.Service.Services
                     throw new ErrorCodeException(ResponseMessages.ERROR_NOT_FOUND_DATA);
                 }
 
+                order.Count = orderDto.Count;
                 order.CreatedDate = orderDto.CreatedDate;
                 order.UpdatedDate = orderDto.UpdatedDate;
 
