@@ -1,4 +1,4 @@
-﻿namespace CoworkingBooking.Service.DTOs.Order
+﻿namespace OnlineStore.Service.DTOs.Order
 {
     public class OrderForUpdateDto
     {
