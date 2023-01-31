@@ -12,6 +12,7 @@ namespace OnlineStore.Service.Extensions
             services.AddScoped<ISellerService, SellerService>()
                 .AddScoped<ICustomerService, CustomerService>()
                 .AddScoped<IProductService, ProductService>()
+                .AddScoped<IOrderService, OrderService>()
                 .AddAutoMapper(typeof(MappingInitializer));
         }
     }

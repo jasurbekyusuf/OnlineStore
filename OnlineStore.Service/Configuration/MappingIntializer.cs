@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using OnlineStore.Domain.Entities;
 using OnlineStore.Service.DTOs.Customer;
+using OnlineStore.Service.DTOs.Order;
 using OnlineStore.Service.DTOs.Product;
 using OnlineStore.Service.DTOs.Seller;
 
@@ -16,6 +17,8 @@ namespace OnlineStore.Service.Configuration
             CreateMap<Customer, CustomerForUpdateDTo>().ReverseMap();
             CreateMap<Product, ProductForCreationDto>().ReverseMap();
             CreateMap<Product, ProductForUpdateDTo>().ReverseMap();
+            CreateMap<Order, OrderForCreationDto>().ReverseMap();
+            CreateMap<Order, OrderForUpdateDto>().ReverseMap();
         }
     }
 }
