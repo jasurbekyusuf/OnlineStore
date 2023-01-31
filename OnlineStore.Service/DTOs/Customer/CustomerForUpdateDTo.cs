@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace OnlineStore.Service.DTOs.Customer
 {
     public class CustomerForUpdateDTo
     {
-        [Required]
-        public int Id { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
