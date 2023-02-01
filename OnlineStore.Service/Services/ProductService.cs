@@ -87,7 +87,7 @@ namespace OnlineStore.Service.Services
                 }
 
                 product.Title = productDto.Title;
-                //product.Description = productDto.Description;
+                product.Descriptions = productDto.Descriptions;
                 product.Price = productDto.Price;
                 var result = await unitOfWork.Products.UpdateAsync(product);
                 await unitOfWork.SaveChangesAsync();
