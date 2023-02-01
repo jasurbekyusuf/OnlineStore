@@ -29,19 +29,20 @@ Id int identity(1,1)primary key not null,
 Title nvarchar(50) not null,
 Descriptions nvarchar(500),
 Price decimal not null,
-ProductCount int,
-Sold int,
-UserId int foreign key  references Seller(Id) not null
+CreatedSellerId int foreign key  references Seller(Id) not null
 )
 
 Create Table [Order](
 Id int identity(1,1)primary key not null,
-Count int not null,
+Quantity int not null,
 TotalPrice decimal not null,
-ProductId int foreign key  references Product(Id),
-CustomerId int foreign key  references Customer(Id),
-SellerId int foreign key references Seller(Id),
+ProductId int foreign key  references Product(Id) not null,
+CustomerId int foreign key  references Customer(Id) not null,
+SellerId int foreign key references Seller(Id) not null,
 CreatedDate datetimeoffset,
 UpdatedDate datetimeoffset
 )
+
+insert into [Order](Quantity,TotalPrice,ProductId,CustomerId,SellerId)
+values(1,1000,4,1,1)
 
