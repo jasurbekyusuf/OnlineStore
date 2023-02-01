@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace OnlineStore.Domain.Entities;
+﻿namespace OnlineStore.Domain.Entities;
 
 public partial class Product
 {
@@ -12,10 +9,6 @@ public partial class Product
     public string? Descriptions { get; set; }
 
     public decimal Price { get; set; }
-
-    public int? ProductCount { get; set; }
-
-    public int? Sold { get; set; }
 
     public int UserId { get; set; }
 
