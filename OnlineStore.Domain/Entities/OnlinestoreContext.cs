@@ -25,17 +25,17 @@ public partial class OnlinestoreContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=LAPTOP-NUOSV48M\\SQLEXPRESS;Database=onlinestore;Trusted_connection=true;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=onlinestore;Trusted_Connection=true;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Customer__3214EC07D3B4A979");
+            entity.HasKey(e => e.Id).HasName("PK__Customer__3214EC07F3DC429F");
 
             entity.ToTable("Customer");
 
-            entity.HasIndex(e => e.Email, "UQ__Customer__A9D1053422963277").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Customer__A9D10534C7897DDE").IsUnique();
 
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.FirstName).HasMaxLength(50);
@@ -45,7 +45,7 @@ public partial class OnlinestoreContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Order__3214EC07DA8A163A");
+            entity.HasKey(e => e.Id).HasName("PK__Order__3214EC07D3152F02");
 
             entity.ToTable("Order");
 
@@ -53,20 +53,23 @@ public partial class OnlinestoreContext : DbContext
 
             entity.HasOne(d => d.Customer).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.CustomerId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Order__CustomerI__534D60F1");
 
             entity.HasOne(d => d.Product).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Order__ProductId__52593CB8");
 
             entity.HasOne(d => d.Seller).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.SellerId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Order__SellerId__5441852A");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Product__3214EC0773B55409");
+            entity.HasKey(e => e.Id).HasName("PK__Product__3214EC07D6FA2A19");
 
             entity.ToTable("Product");
 
@@ -74,19 +77,19 @@ public partial class OnlinestoreContext : DbContext
             entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.Title).HasMaxLength(50);
 
-            entity.HasOne(d => d.User).WithMany(p => p.Products)
-                .HasForeignKey(d => d.UserId)
+            entity.HasOne(d => d.CreatedSeller).WithMany(p => p.Products)
+                .HasForeignKey(d => d.CreatedSellerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Product__UserId__4F7CD00D");
+                .HasConstraintName("FK__Product__Created__4F7CD00D");
         });
 
         modelBuilder.Entity<Seller>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Seller__3214EC0786A32A7D");
+            entity.HasKey(e => e.Id).HasName("PK__Seller__3214EC07C1824073");
 
             entity.ToTable("Seller");
 
-            entity.HasIndex(e => e.Email, "UQ__Seller__A9D10534D41FB699").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Seller__A9D105343DABA0D6").IsUnique();
 
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.FirstName).HasMaxLength(50);

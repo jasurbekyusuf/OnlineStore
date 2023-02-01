@@ -13,13 +13,9 @@ public partial class Product
 
     public decimal Price { get; set; }
 
-    public int? ProductCount { get; set; }
+    public int CreatedSellerId { get; set; }
 
-    public int? Sold { get; set; }
-
-    public int UserId { get; set; }
+    public virtual Seller CreatedSeller { get; set; } = null!;
 
     public virtual ICollection<Order> Orders { get; } = new List<Order>();
-
-    public virtual Seller User { get; set; } = null!;
 }

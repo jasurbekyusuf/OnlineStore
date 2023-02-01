@@ -39,8 +39,9 @@ namespace OnlineStore.Service.Services
 
                 var priceForOrder = (await unitOfWork.Products.GetAsync(order => order.Id == orderDto.ProductId)).Price;
                 var order = mapper.Map<Order>(orderDto);
-                order.TotalPrice = orderDto.Count * priceForOrder;
+                order.TotalPrice = orderDto.Quantities * priceForOrder;
                 var result = await unitOfWork.Orders.CreateAsync(order);
+                await unitOfWork.SaveChangesAsync();
                 if (result != null)
                 {
                     return result;
@@ -94,9 +95,12 @@ namespace OnlineStore.Service.Services
                     throw new ErrorCodeException(ResponseMessages.ERROR_NOT_FOUND_DATA);
                 }
 
-                order.Count = orderDto.Count;
+                order.Quantity = orderDto.Quantities;
                 order.CreatedDate = orderDto.CreatedDate;
                 order.UpdatedDate = orderDto.UpdatedDate;
+
+                var priceForOrder = (await unitOfWork.Products.GetAsync(order => order.Id == orderDto.ProductId)).Price;
+                order.TotalPrice = orderDto.Quantities * priceForOrder;
 
                 var result = await unitOfWork.Orders.UpdateAsync(order);
                 await unitOfWork.SaveChangesAsync();
