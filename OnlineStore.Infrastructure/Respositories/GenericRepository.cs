@@ -36,12 +36,12 @@ namespace OnlineStore.Infrastructure.Respositories
 
         public async Task<IQueryable<T>> GetAllAsync(Expression<Func<T, bool>> expression = null)
         {
-            return expression is null ? dbSet : dbSet.Where(expression);
+            return expression is null ? dbSet : dbSet.AsNoTracking().Where(expression);
         }
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>> expression)
+        public virtual async Task<T> GetAsync(Expression<Func<T, bool>> expression)
         {
-            var entity = await dbSet.FirstOrDefaultAsync(expression);
+            var entity = await dbSet.AsNoTracking().FirstOrDefaultAsync(expression);
             return entity;
         }
 
