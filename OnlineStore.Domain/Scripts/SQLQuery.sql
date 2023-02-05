@@ -171,8 +171,7 @@ SELECT
     Product.Id AS ProductId,
 	Product.Price AS ProductPrice,
     Customer.Id AS CustomerId, 
-    SUM([Order].Quantity) AS TotalQuantity, 
-  --  SUM([Order].TotalPrice) AS TotalPrice, 
+    SUM([Order].Quantity) AS TotalQuantity,  
 	SUM([Product].Price*[Order].Quantity) AS TotalPrice
 FROM 
     [Order] 
@@ -185,4 +184,3 @@ GROUP BY
     Product.Id, 
 	Product.Price,
     Customer.Id 
-
