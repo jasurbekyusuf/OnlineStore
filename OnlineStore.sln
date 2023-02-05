@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Infrastructure.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Service", "OnlineStore.Service\OnlineStore.Service.csproj", "{3058E692-9038-4E3E-B730-90AB34DC741A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Tests.Unit", "OnlineStore.Tests.Unit\OnlineStore.Tests.Unit.csproj", "{79D890AC-F7DC-4E11-8293-8DA2AA41CD28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Tests.Unit", "OnlineStore.Tests.Unit\OnlineStore.Tests.Unit.csproj", "{79D890AC-F7DC-4E11-8293-8DA2AA41CD28}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A10ADB18-C64B-465B-8DCD-63024C873690}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
