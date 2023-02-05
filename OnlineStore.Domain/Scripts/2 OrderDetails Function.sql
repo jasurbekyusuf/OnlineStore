@@ -13,6 +13,7 @@ RETURNS TABLE
 AS
 RETURN
 SELECT 
+    [Order].Id As Id,
     CreatedDate AS [Date], 
     Seller.Id AS SellerId,
 	Seller.FirstName AS SellerName,
@@ -29,6 +30,7 @@ FROM
     JOIN Product ON [Order].ProductId = Product.Id 
     JOIN Customer ON [Order].CustomerId = Customer.Id 
 GROUP BY 
+    [Order].Id,
     [Order].CreatedDate,
     Seller.Id, 
 	Seller.FirstName,

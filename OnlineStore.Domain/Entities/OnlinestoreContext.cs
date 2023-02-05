@@ -51,7 +51,7 @@ public partial class OnlinestoreContext : DbContext
             entity.Property(e => e.Phone).HasMaxLength(50);
         });
 
-        //modelBuilder.Entity<OrderDetails>().ToFunction("GetOrderDetails");
+        modelBuilder.Entity<OrderDetails>().ToFunction("GetOrderDetails");
 
         modelBuilder.Entity<Order>(entity =>
         {

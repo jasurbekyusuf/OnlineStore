@@ -165,13 +165,19 @@ END
 
 -- Filter
 
+CREATE FUNCTION GetOrderDetails()
+RETURNS TABLE
+AS
+RETURN
 SELECT 
+    [Order].Id As Id,
     CreatedDate AS [Date], 
     Seller.Id AS SellerId, 
     Product.Id AS ProductId,
 	Product.Price AS ProductPrice,
     Customer.Id AS CustomerId, 
-    SUM([Order].Quantity) AS TotalQuantity,  
+    SUM([Order].Quantity) AS TotalQuantity, 
+  --  SUM([Order].TotalPrice) AS TotalPrice, 
 	SUM([Product].Price*[Order].Quantity) AS TotalPrice
 FROM 
     [Order] 
@@ -179,8 +185,12 @@ FROM
     JOIN Product ON [Order].ProductId = Product.Id 
     JOIN Customer ON [Order].CustomerId = Customer.Id 
 GROUP BY 
+    [Order].Id,
     [Order].CreatedDate,
     Seller.Id, 
     Product.Id, 
 	Product.Price,
     Customer.Id 
+
+
+	SELECT * FROM GetOrderDetails()
